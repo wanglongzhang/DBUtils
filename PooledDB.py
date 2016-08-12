@@ -147,6 +147,7 @@ __date__ = "$Date: 2011-08-14 13:57:11 +0200 (So, 14. Aug 2011) $"
 from threading import Condition
 
 from DBUtils.SteadyDB import connect
+from DBUtils.Singleton import Singleton
 
 
 class PooledDBError(Exception):
@@ -162,7 +163,7 @@ class TooManyConnections(PooledDBError):
     """Too many database connections were opened."""
 
 
-class PooledDB:
+class PooledDB(Singleton):
     """Pool for DB-API 2 connections.
 
     After you have created the connection pool, you can use
